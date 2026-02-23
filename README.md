@@ -1,1 +1,9 @@
 # Simulated-Annealing-Autonomous-Intersection-Scheduling-using-Python
+
+For this project, I tackled the problem of scheduling autonomous vehicles through a 4-way intersection without collisions, using Simulated Annealing (SA) — a probabilistic optimization technique inspired by the physical process of slowly cooling metal to reach a low-energy state. 
+
+The core challenge was determining the optimal start time for each vehicle such that no two conflicting trajectories overlap inside the intersection, lane queue order is respected, and two performance metrics are jointly minimized: the total time to clear the intersection (makespan) and the sum of waiting times across all vehicles. These two objectives were combined into a single weighted fitness function, giving me fine-grained control over the trade-off between throughput and fairness.
+
+The algorithm is implemented in Python, starting with a greedy initial solution that scheduled vehicles one by one in order, resolving conflicts by pushing start times forward as needed. From there, the SA loop iteratively proposed neighboring solutions by slightly perturbing a randomly chosen vehicle's start time, then decided whether to accept the new solution based on its quality. Better solutions were always accepted, while worse ones were accepted with a probability that decreased over time as the "temperature" parameter cooled — this controlled randomness is what allows SA to escape local optima and explore the solution space more broadly. The temperature was decayed geometrically each iteration until the system converged.
+
+The result was a well-optimized schedule with no collisions, validated against all constraints programmatically. This project gave me hands-on experience with metaheuristic search, penalty-based constraint handling, and the practical challenges of tuning cooling schedules for convergence.
